@@ -59,6 +59,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  max-width: 100%;
 }
 
 html {
@@ -69,11 +70,13 @@ html {
   background-color: var(--bg-dark);
   color: var(--text-cream);
   overflow-x: hidden !important;
+  max-width: 100vw !important;
   width: 100%;
 }
 
 body {
   overflow-x: hidden !important;
+  max-width: 100vw !important;
   width: 100%;
   position: relative;
   background-color: var(--bg-dark);
@@ -125,15 +128,19 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 20px;
+  padding: 6px 18px;
   background: rgba(212, 175, 55, 0.12);
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-full);
   color: var(--accent-gold);
-  font-size: 0.88rem;
+  font-size: clamp(0.74rem, 2.8vw, 0.88rem);
   font-weight: 700;
   letter-spacing: 0.5px;
   margin-bottom: 16px;
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
 }
 
 .section-tag::before {
@@ -144,6 +151,7 @@ section {
   border-radius: 50%;
   background: var(--accent-gold);
   box-shadow: 0 0 10px var(--accent-gold);
+  flex-shrink: 0;
 }
 
 .section-tag.rose-tag {
@@ -158,12 +166,14 @@ section {
 }
 
 .section-title {
-  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-size: clamp(1.4rem, 4vw, 3rem);
   font-weight: 900;
   line-height: 1.35;
   color: var(--text-white);
   margin-bottom: 18px;
   letter-spacing: -0.4px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .section-title .text-gold {
@@ -220,6 +230,11 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  max-width: 100%;
+}
+
+.top-bar-item span {
+  word-break: break-word;
 }
 
 .top-bar-item svg {
@@ -275,18 +290,24 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  min-width: 0;
+  flex-shrink: 1;
 }
 
 .brand-logo svg, .brand-logo img {
-  height: 48px;
+  height: 44px;
   width: auto;
-  max-width: 220px;
+  max-width: 200px;
+  object-fit: contain;
 }
 
 .nav-menu {
@@ -435,33 +456,41 @@ section {
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 20px;
+  gap: 8px;
+  padding: 8px 16px;
   background: var(--accent-gold-subtle);
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-full);
   margin-bottom: 22px;
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.4;
+  text-align: center;
 }
 
 .hero-badge svg {
   width: 16px;
   height: 16px;
   color: var(--accent-gold);
+  flex-shrink: 0;
 }
 
 .hero-badge span {
-  font-size: 0.88rem;
+  font-size: clamp(0.74rem, 2.8vw, 0.88rem);
   font-weight: 700;
   color: var(--accent-gold-light);
+  word-break: break-word;
 }
 
 .hero-title {
-  font-size: clamp(2.3rem, 4.2vw, 3.8rem);
+  font-size: clamp(1.45rem, 5.2vw, 3.8rem);
   font-weight: 900;
-  line-height: 1.25;
+  line-height: 1.28;
   color: var(--text-white);
   margin-bottom: 22px;
   letter-spacing: -0.5px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .hero-title span {
@@ -471,12 +500,13 @@ section {
 }
 
 .hero-description {
-  font-size: clamp(1.02rem, 1.38vw, 1.2rem);
+  font-size: clamp(0.92rem, 1.35vw, 1.2rem);
   color: var(--text-cream);
-  line-height: 1.85;
+  line-height: 1.8;
   margin-bottom: 34px;
   opacity: 0.92;
   max-width: 580px;
+  word-break: break-word;
 }
 
 .hero-cta-group {
@@ -1362,11 +1392,15 @@ select.form-control {
 }
 
 @media (max-width: 860px) {
-  .nav-menu, .nav-actions .btn-chefz-order {
+  .nav-menu, .nav-actions .btn-chefz-order, .nav-actions .btn-vip-gold {
     display: none;
   }
   .mobile-toggle {
     display: flex;
+  }
+  .brand-logo svg, .brand-logo img {
+    height: 36px;
+    max-width: 150px;
   }
   .collections-grid {
     grid-template-columns: 1fr;
@@ -1394,58 +1428,131 @@ select.form-control {
 
 @media (max-width: 540px) {
   .container {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .brand-logo svg, .brand-logo img {
+    height: 32px;
+    max-width: 130px;
+  }
+  .hero-section {
+    padding: 45px 0 65px;
+  }
+  .hero-title {
+    font-size: clamp(1.45rem, 6.8vw, 2.2rem);
+    margin-bottom: 16px;
+    word-break: break-word;
+  }
+  .hero-description {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    word-break: break-word;
+  }
+  .hero-badge {
+    padding: 6px 12px;
+    margin-bottom: 16px;
+  }
+  .hero-badge span {
+    font-size: 0.78rem;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  .hero-cta-group a {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    box-sizing: border-box;
+    white-space: normal;
   }
   .hero-trust-bar {
     grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 32px;
+    padding-top: 24px;
   }
   .hero-floating-card {
     position: static;
     margin-top: 16px;
     width: 100%;
     box-sizing: border-box;
+    padding: 12px 16px;
+  }
+  .floating-icon {
+    width: 38px;
+    height: 38px;
+  }
+  .floating-title {
+    font-size: 0.88rem;
+  }
+  .floating-subtitle {
+    font-size: 0.75rem;
   }
   .floating-whatsapp-widget span {
     display: none;
   }
   .floating-whatsapp-widget {
-    padding: 14px;
+    padding: 12px;
     border-radius: 50%;
-    bottom: 20px;
-    left: 20px;
+    bottom: 18px;
+    left: 18px;
   }
   .section-title {
-    font-size: 1.85rem;
+    font-size: clamp(1.35rem, 6vw, 1.8rem);
+    word-break: break-word;
+  }
+  .section-subtitle {
+    font-size: 0.88rem;
+    line-height: 1.65;
   }
   .booking-form-card, .boutique-info-card {
     padding: 22px 14px;
     border-radius: var(--radius-md);
   }
   .form-header h3 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+    word-break: break-word;
   }
   .form-header p {
     font-size: 0.82rem;
   }
   .boutique-info-card h3 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
+    word-break: break-word;
   }
   .contact-meta-item {
-    gap: 12px;
+    gap: 10px;
   }
   .meta-icon-box {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     border-radius: 10px;
   }
   .channel-card {
     flex-direction: column;
     text-align: center;
-    padding: 24px 18px;
+    padding: 22px 16px;
   }
   .channel-link {
     justify-content: center;
+  }
+  .collection-card {
+    border-radius: var(--radius-md);
+  }
+  .collection-body {
+    padding: 18px 14px;
+  }
+  .collection-body h3 {
+    font-size: 1.12rem;
+  }
+  .collection-body p {
+    font-size: 0.84rem;
+  }
+  .flavor-card {
+    padding: 20px 16px;
   }
 }
 
@@ -1454,29 +1561,64 @@ select.form-control {
     padding-left: 10px;
     padding-right: 10px;
   }
+  .brand-logo svg, .brand-logo img {
+    height: 28px;
+    max-width: 120px;
+  }
+  .top-bar {
+    font-size: 0.72rem;
+    padding: 6px 0;
+  }
+  .hero-title {
+    font-size: 1.35rem;
+  }
+  .section-title {
+    font-size: 1.25rem;
+  }
   .booking-form-card, .boutique-info-card {
     padding: 16px 10px;
   }
   .form-control {
     padding: 10px 8px;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
   }
   .form-submit-btn {
     padding: 12px 10px;
     font-size: 0.82rem;
     gap: 6px;
   }
-  .section-title {
-    font-size: 1.6rem;
-  }
   .meta-icon-box {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
   }
   .meta-details h4 {
-    font-size: 0.88rem;
+    font-size: 0.85rem;
   }
   .meta-details p, .meta-details a {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
+  }
+  .chefz-badge-box {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 310px) {
+  .container {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+  .brand-logo svg, .brand-logo img {
+    height: 24px;
+    max-width: 100px;
+  }
+  .hero-title {
+    font-size: 1.2rem;
+  }
+  .section-title {
+    font-size: 1.15rem;
+  }
+  .hero-badge span {
+    font-size: 0.72rem;
   }
 }
