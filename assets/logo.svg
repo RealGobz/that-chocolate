@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9F1DE"/>
+      <stop offset="35%" stop-color="#E2C484"/>
+      <stop offset="70%" stop-color="#C59E4E"/>
+      <stop offset="100%" stop-color="#936D26"/>
+    </linearGradient>
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Cocoa Pod & Crown Motif -->
+  <g transform="translate(45, 60)">
+    <circle cx="0" cy="0" r="32" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="3, 3" opacity="0.6"/>
+    <circle cx="0" cy="0" r="27" fill="#1C120B" stroke="url(#goldGrad)" stroke-width="2"/>
+    <!-- Stylized Cocoa Bean / Crown -->
+    <path d="M-8,-14 C-2,-18 2,-18 8,-14 C12,-8 14,0 8,12 C4,18 -4,18 -8,12 C-14,0 -12,-8 -8,-14 Z" fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+    <path d="M-8,-14 C-1,-6 1,6 8,12" fill="none" stroke="url(#goldGrad)" stroke-width="1.2" stroke-linecap="round"/>
+    <circle cx="0" cy="-2" r="3" fill="url(#goldGrad)"/>
+  </g>
+
+  <!-- Main Cursive Logo "That's." -->
+  <text x="105" y="68" font-family="'Playfair Display', 'Cinzel', 'Great Vibes', 'Brush Script MT', Georgia, serif" font-size="52" font-style="italic" font-weight="700" fill="url(#goldGrad)" letter-spacing="1">That's.</text>
+
+  <!-- Subtitle: Haute Chocolaterie • Riyadh -->
+  <text x="110" y="92" font-family="'Tajawal', 'Montserrat', sans-serif" font-size="11" font-weight="600" fill="#E2C484" letter-spacing="4" opacity="0.9">HAUTE CHOCOLATERIE • RIYADH</text>
+  <text x="315" y="92" font-family="'Tajawal', sans-serif" font-size="11" font-weight="700" fill="#E2C484" opacity="0.9">ذاتس تشوكلت</text>
+</svg>
